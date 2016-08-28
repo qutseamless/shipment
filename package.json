@@ -1,0 +1,67 @@
+{
+  "name": "shipment",
+  "version": "1.0.0",
+  "description": "the shipment application for seamless",
+  "main": "main.js",
+  "contributors": [
+    "Leon Pearce <leonp1991@gmail.com>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node tools/dev",
+    "test": "watch 'npm run mocha' source",
+    "docs": "watch 'npm run document' source",
+    "deploy": "babel-node tools/deploy",
+    "build": "babel-node tools/build ",
+    "mocha": "babel-node tools/test",
+    "document": "babel-node tools/docs",
+    "open:coverage": "npm run mocha && open docs/coverage/index.html",
+    "open:api": "npm run document && open docs/api/index.html"
+  },
+  "babel": {
+    "presets": [
+      "es2015-node",
+      "stage-0"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb-base",
+    "rules": {
+      "no-console": 0,
+      "no-unsafe-negation": 0,
+      "generator-star-spacing": 0
+    }
+  },
+  "nyc": {
+    "report-dir": "./docs/coverage",
+    "extension": [".js", ".jsx"],
+    "reporter": ["text", "html"],
+    "exclude": "source/**/spec.js*",
+    "include": "source/**/*.js*",
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "lines": 80
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015-node": "^6.1.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "copy": "^0.3.0",
+    "esdoc": "^0.4.7",
+    "esdoc-es7-plugin": "0.0.3",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb-base": "^5.0.1",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.12.0",
+    "mocha": "^3.0.1",
+    "watch": "^0.19.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.13.0",
+    "node-fetch": "^1.6.0"
+  },
+  "engine": "node 6.4.0"
+}

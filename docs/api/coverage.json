@@ -1,0 +1,27 @@
+{
+  "coverage": "100%",
+  "expectCount": 4,
+  "actualCount": 4,
+  "files": {
+    "source/emitter.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "source/shipment/location/location.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "source/shipment/shipment.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "source/validate.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    }
+  }
+}
