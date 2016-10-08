@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 import fetch from 'node-fetch';
 
 import { validate } from './validate';
@@ -8,7 +6,7 @@ import { validate } from './validate';
  * @type {Object} defaults the default request options.
  */
 const defaults = {
-  endpoint: '/data',
+  endpoint: '/api/packets',
   address: 'localhost',
   port: '3000',
   protocol: 'http',
@@ -21,25 +19,20 @@ const defaults = {
  * @param  {Object} options - the api options.
  * @returns {Function} returns a function for emmiting to the api.
  */
-export function emmiter(options) {
+export default function (options) {
   const { protocol, address, port, endpoint } = validate(options, defaults);
 
-  /** the configured emmiter */
-  return body => new Promise(async resolve => {
+  return async function (body) {
     body = JSON.stringify(body);
     try {
-      console.log(`sending: ${body}`);
-      const response = await fetch(
+      return await fetch(
         `${protocol}://${address}:${port}${endpoint}`, {
           headers: { 'content-type': 'application/json' },
-          method: 'POST',
-          body,
+          method: 'POST', body,
         }
       );
-      console.log(`response: ${await response.text()}`);
-      resolve();
     } catch (error) {
       throw error;
     }
-  });
+  }
 }

@@ -1,10 +1,10 @@
 /**
- * @module this modules is executed by mocha before tests,
- * place setup code here .
+ * @module setup for tests
  */
+import mongoose from 'mongoose';
 
 
-/*
-eslint
-import/no-extraneous-dependencies: 0,
-*/
+/**
+ * assign mongoose promises as native promises.
+ */
+mongoose.Promise = Promise;

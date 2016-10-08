@@ -1,7 +1,5 @@
-import 'babel-polyfill';
-
-import { emitter } from './emitter';
-import { shipment } from './shipment';
+import emitter from './emitter';
+import shipment from './shipment';
 
 
 console.log('starting shipment');
@@ -15,17 +13,17 @@ const emmiterOptions = {};
 /**
  * start emmiting.
  */
-const emmit = emmiter(emmiterOptions);
-
+const packetEmmiter = emitter(emmiterOptions);
 
 /**
  * specify shipment options here...
  */
-const shipmentOptions = {};
+const shipmentOptions = {
+  deviceId: 61234,
+};
 
 
 /**
  * create delievery
  */
-shipment(emmit, shipmentOptions)
-  .then(() => console.log('shipment complete'));
+shipment(packetEmmiter, shipmentOptions);
