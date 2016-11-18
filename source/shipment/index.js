@@ -32,7 +32,7 @@ const defaults = {
   duration: 2, // minutes
   location: {
     lat: -27.465501,
-    long: 153.002685,
+    lng: 153.002685,
   },
 };
 
@@ -55,7 +55,7 @@ export default function (emmiter, options) {
 
   let count = 0;
   const emmit = setInterval(() => {
-    emmiter({ deviceId, location, createdAt: new Date() });
+    emmiter(`${deviceId},${location.lat},${location.lng},,,,12.${parseInt(Math.random() * 10, 10)},24.${parseInt(Math.random() * 10, 10)}`);
     location = move(location, speed);
     count++;
 

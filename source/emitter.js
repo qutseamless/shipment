@@ -2,11 +2,12 @@ import fetch from 'node-fetch';
 
 import { validate } from './validate';
 
+
 /**
  * @type {Object} defaults the default request options.
  */
 const defaults = {
-  endpoint: '/api/packets',
+  endpoint: '/api/packet',
   address: 'localhost',
   port: '3000',
   protocol: 'http',
@@ -22,8 +23,10 @@ const defaults = {
 export default function (options) {
   const { protocol, address, port, endpoint } = validate(options, defaults);
 
-  return async function (body) {
-    body = JSON.stringify(body);
+  return async function (Body) {
+    const body = JSON.stringify({ Body });
+    console.log(body);
+
     try {
       return await fetch(
         `${protocol}://${address}:${port}${endpoint}`, {

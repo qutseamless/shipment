@@ -10,11 +10,11 @@ const calcLocation = (location, x, y) => {
 
   /** calc offset */
   const latOffset = x / RADIUS;
-  const longOffset = y / (RADIUS * Math.cos(location.lat * PI / 180));
+  const lngOffset = y / (RADIUS * Math.cos(location.lat * PI / 180));
 
   return {
     lat: location.lat + latOffset * 180 / PI,
-    long: location.long + longOffset * 180 / PI,
+    lng: location.lng + lngOffset * 180 / PI,
   };
 };
 
